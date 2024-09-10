@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Frete Avançada</title>
+    <link rel="icon" href="./img/van.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Calculadora de Frete</h1>
+        <form id="freteForm">
+            <label for="cepDestino">CEP de Destino:</label>
+            <div class="containerInput">    
+                <input type="text" id="cepDestino" required maxlength="10" placeholder="00000-000" oninput="formatarCEP(this)">
+            </div>
+            <div class="containerBut">
+                <button type="button" onclick="calcularFrete()">Calcular</button>
+            </div>
+        </form>
+        <div id="resultado"></div>
+        <img src="./img/van.png" class="imagemCarro">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

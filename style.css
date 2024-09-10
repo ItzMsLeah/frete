@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+    width: 520px;
+    max-width: 100%;
+    min-height: 320px;
+}
+
+.containerInput {
+    display: flex;
+    justify-content: center;
+}
+
+.containerBut {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    width: 100%;
+}
+
+label {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 15px;
+    padding: 10px;
+}
+
+input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    padding-right: 40px;
+    box-sizing: border-box;
+    border-radius:14px;
+    font-size: 16px;
+}
+
+button {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #ffc400;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff9100;
+}
+
+#resultado {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+}
+
+.imagemCarro {
+    display: block;        /* Garante que a imagem se comporte como um bloco */
+    margin-top: -3px;      /* Espaço acima da imagem */
+    margin-bottom: -35px;   /* Espaço abaixo da imagem */
+    max-width: 80px;      /* Ajuste a largura máxima conforme necessário */
+    height: auto;          /* Mantém a proporção da imagem */
+    margin-left: auto;     /* Centraliza a imagem horizontalmente */
+    margin-right: auto; 
+}
