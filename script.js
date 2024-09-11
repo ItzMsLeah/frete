@@ -9,8 +9,8 @@ function formatarCEP(input) {
 
 async function calcularFrete() {
     const origem = '85819280';
-    const destinoElement = document.getElementById('cepDestino');  // Obtemos o elemento
-    const destino = destinoElement ? destinoElement.value.trim() : '';  // Verificamos se o elemento existe e obtemos seu valor
+    const destinoElement = document.getElementById('cepDestino');
+    const destino = destinoElement ? destinoElement.value.trim() : '';
 
     const peso = '1';
     const largura = '10';
@@ -45,33 +45,33 @@ function mostrarResultado(dadosFrete) {
     const resultados = document.getElementById('resultados');
 
     if (resultados) {
-        resultados.innerHTML = ''; // Limpar resultados anteriores
+        resultados.innerHTML = '';
 
         if (dadosFrete && dadosFrete.opcoes && Array.isArray(dadosFrete.opcoes)) {
             dadosFrete.opcoes.forEach(opcao => {
-                // Criar uma nova div para cada transportadora
+                
                 const divTransportadora = document.createElement('div');
-                divTransportadora.classList.add('opcao-frete'); // Classe para estilização
+                divTransportadora.classList.add('opcao-frete');
 
-                // Criar e adicionar informações de transportadora
+                
                 const transportadora = document.createElement('p');
                 transportadora.textContent = `Transportadora: ${opcao.transportadora}`;
                 divTransportadora.appendChild(transportadora);
 
-                // Criar e adicionar informações de prazo de entrega
+                
                 const prazo = document.createElement('p');
                 prazo.textContent = `Prazo de Entrega: ${opcao.prazo} dias`;
                 divTransportadora.appendChild(prazo);
 
-                // Criar e adicionar informações de valor de frete
+                
                 const valor = document.createElement('p');
                 valor.textContent = `Valor: R$${opcao.valor.toFixed(2)}`;
                 divTransportadora.appendChild(valor);
 
-                // Estilização opcional: adicionar margem entre as opções
+                
                 divTransportadora.style.marginBottom = '20px';
 
-                // Adicionar a div da transportadora ao contêiner de resultados
+                
                 resultados.appendChild(divTransportadora);
             });
         } else {
