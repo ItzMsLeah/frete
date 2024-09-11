@@ -68,20 +68,40 @@ function calcularFrete() {
 }
 
 function mostrarResultado(dadosFrete) {
-  var resultadoDiv = document.getElementById('resultado');
-  resultadoDiv.innerHTML = '';
+  var resultados = document.getElementById('resultados');
 
-  if (!dadosFrete || dadosFrete.length === 0) {
-    resultadoDiv.innerHTML = 'Não foi possível obter opções de frete.';
-    return;
+  if (resultados) {
+    resultados.innerHTML = ''; // Limpar resultados anteriores
+
+    if (dadosFrete && dadosFrete.opcoes && Array.isArray(dadosFrete.opcoes)) {
+      dadosFrete.opcoes.forEach(function (opcao) {
+        // Criar uma nova div para cada transportadora
+        var divTransportadora = document.createElement('div');
+        divTransportadora.classList.add('opcao-frete'); // Classe para estilização
+        // Criar e adicionar informações de transportadora
+
+        var transportadora = document.createElement('p');
+        transportadora.textContent = "Transportadora: ".concat(opcao.transportadora);
+        divTransportadora.appendChild(transportadora); // Criar e adicionar informações de prazo de entrega
+
+        var prazo = document.createElement('p');
+        prazo.textContent = "Prazo de Entrega: ".concat(opcao.prazo, " dias");
+        divTransportadora.appendChild(prazo); // Criar e adicionar informações de valor de frete
+
+        var valor = document.createElement('p');
+        valor.textContent = "Valor: R$".concat(opcao.valor.toFixed(2));
+        divTransportadora.appendChild(valor); // Estilização opcional: adicionar margem entre as opções
+
+        divTransportadora.style.marginBottom = '20px'; // Adicionar a div da transportadora ao contêiner de resultados
+
+        resultados.appendChild(divTransportadora);
+      });
+    } else {
+      console.error("Formato de resposta inválido:", dadosFrete);
+      alert('Não foi possível obter opções de frete.');
+    }
+  } else {
+    console.error("Elemento 'resultados' não encontrado.");
   }
-
-  dadosFrete.forEach(function (opcao) {
-    var transportadora = opcao.transportadora,
-        prazo = opcao.prazo,
-        valor = opcao.valor;
-    var freteInfo = "\n            <p>Transportadora: ".concat(transportadora, "</p>\n            <p>Prazo de Entrega: ").concat(prazo, " dias</p>\n            <p>Valor do Frete: R$ ").concat(valor.toFixed(2), "</p>\n            <hr>\n        ");
-    resultadoDiv.innerHTML += freteInfo;
-  });
 }
 //# sourceMappingURL=script.dev.js.map

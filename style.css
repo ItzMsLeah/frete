@@ -10,8 +10,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    
     height: 100vh;
+    margin: 0;
 }
 
 .container {
@@ -81,12 +82,26 @@ button:hover {
 }
 
 #resultado {
+    display: flex;                /* Usa flexbox para organizar o layout */
+    flex-direction: column;       /* Organiza as `divs` em uma coluna */
+    align-items: center;
     margin-top: 20px;
     text-align: center;
     font-size: 18px;
     color: #333;
     border-top: 1px solid #ddd;
     padding-top: 15px;
+}
+
+.opcao-frete {
+    border: 1px solid #ddd;       /* Borda das `divs` */
+    padding: 10px;                /* Espaçamento interno */
+    border-radius: 5px;           /* Cantos arredondados */
+    background-color: #f9f9f9;    /* Cor de fundo */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);  /* Sombra para efeito visual */
+    margin-bottom: 20px;          /* Espaçamento entre as `divs` */
+    width: 80%;                   /* Largura das `divs` */
+    max-width: 400px;             /* Largura máxima para limitar a largura */
 }
 
 .imagemCarro {

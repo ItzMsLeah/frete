@@ -42,24 +42,43 @@ async function calcularFrete() {
 
 
 function mostrarResultado(dadosFrete) {
-    const resultadoDiv = document.getElementById('resultado');
+    const resultados = document.getElementById('resultados');
 
-    resultadoDiv.innerHTML = '';
+    if (resultados) {
+        resultados.innerHTML = ''; // Limpar resultados anteriores
 
-    if (!dadosFrete || dadosFrete.length === 0) {
-        resultadoDiv.innerHTML = 'Não foi possível obter opções de frete.';
-        return;
+        if (dadosFrete && dadosFrete.opcoes && Array.isArray(dadosFrete.opcoes)) {
+            dadosFrete.opcoes.forEach(opcao => {
+                // Criar uma nova div para cada transportadora
+                const divTransportadora = document.createElement('div');
+                divTransportadora.classList.add('opcao-frete'); // Classe para estilização
+
+                // Criar e adicionar informações de transportadora
+                const transportadora = document.createElement('p');
+                transportadora.textContent = `Transportadora: ${opcao.transportadora}`;
+                divTransportadora.appendChild(transportadora);
+
+                // Criar e adicionar informações de prazo de entrega
+                const prazo = document.createElement('p');
+                prazo.textContent = `Prazo de Entrega: ${opcao.prazo} dias`;
+                divTransportadora.appendChild(prazo);
+
+                // Criar e adicionar informações de valor de frete
+                const valor = document.createElement('p');
+                valor.textContent = `Valor: R$${opcao.valor.toFixed(2)}`;
+                divTransportadora.appendChild(valor);
+
+                // Estilização opcional: adicionar margem entre as opções
+                divTransportadora.style.marginBottom = '20px';
+
+                // Adicionar a div da transportadora ao contêiner de resultados
+                resultados.appendChild(divTransportadora);
+            });
+        } else {
+            console.error("Formato de resposta inválido:", dadosFrete);
+            alert('Não foi possível obter opções de frete.');
+        }
+    } else {
+        console.error("Elemento 'resultados' não encontrado.");
     }
-
-    dadosFrete.forEach(opcao => {
-        const { transportadora, prazo, valor } = opcao;
-
-        const freteInfo = `
-            <p>Transportadora: ${transportadora}</p>
-            <p>Prazo de Entrega: ${prazo} dias</p>
-            <p>Valor do Frete: R$ ${valor.toFixed(2)}</p>
-            <hr>
-        `;
-        resultadoDiv.innerHTML += freteInfo;
-    });
 }
